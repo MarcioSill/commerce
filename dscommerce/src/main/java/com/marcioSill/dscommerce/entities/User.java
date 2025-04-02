@@ -11,15 +11,19 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     @Column(unique = true) //para se um email unico
     private  String email;
+
     private String phone;
-    private LocalDate birthData;
+
     private  String password;
+
+    private LocalDate birthDate;
 
     @OneToMany(mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
@@ -27,13 +31,14 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, String email, String phone, LocalDate birthData, String password) {
+    public User(Long id, String name, String email, String phone, String password, LocalDate birthDate, List<Order> orders) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.birthData = birthData;
         this.password = password;
+        this.birthDate = birthDate;
+        this.orders = orders;
     }
 
     public Long getId() {
@@ -68,20 +73,20 @@ public class User {
         this.phone = phone;
     }
 
-    public LocalDate getBirthData() {
-        return birthData;
-    }
-
-    public void setBirthData(LocalDate birthData) {
-        this.birthData = birthData;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public List<Order> getOrders() {
