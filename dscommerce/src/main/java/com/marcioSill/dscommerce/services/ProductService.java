@@ -34,12 +34,36 @@ public class ProductService {
     public ProductDTO insert(ProductDTO dto){
 
         Product entity = new Product();
+        /*entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setPrice(dto.getPrice());
+        entity.setImgUrl(dto.getImgUrl());*/
+        //Criado um metodo auxiliar para fazer a acopia para a entidade
+        copyDtoToEntity(dto, entity);
+        entity = repository.save(entity); // salva os dados no banco
+        return new ProductDTO(entity);
+    }
+
+    @Transactional
+    public ProductDTO update(long id, ProductDTO dto){
+
+        Product entity = repository.getReferenceById(id);
+       /* entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setPrice(dto.getPrice());
+        entity.setImgUrl(dto.getImgUrl());*/
+        //Criado um metodo auxiliar para fazer a acopia para a entidade
+
+        copyDtoToEntity(dto, entity);
+        entity = repository.save(entity); // salva os dados no banco
+        return new ProductDTO(entity);
+    }
+
+    private void copyDtoToEntity(ProductDTO dto, Product entity) {
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
         entity.setPrice(dto.getPrice());
         entity.setImgUrl(dto.getImgUrl());
 
-        entity = repository.save(entity); // salva os dados no banco
-        return new ProductDTO(entity);
     }
 }
