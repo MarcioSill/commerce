@@ -2,7 +2,7 @@ package com.marcioSill.dscommerce.controllers.handlers;
 
 import com.marcioSill.dscommerce.dto.CustomError;
 import com.marcioSill.dscommerce.services.exceptions.ResourceNotFoundException;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

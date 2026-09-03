@@ -1,6 +1,6 @@
 package com.marcioSill.dscommerce.entities;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
